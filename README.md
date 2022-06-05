@@ -27,7 +27,8 @@ Windows 10
 
 ### Node.js
 
-v14.18.0
+- 当初: v14.18.0
+- husky 導入時: v16.15.1 にアップデート
 
 ---
 
@@ -44,56 +45,12 @@ npx gitignore node // これまで手書きだった。楽すぎて感動
 npx covgen // プログラマー倫理にかかわる宣言みたいな感じ？よくわかってない②
 ```
 
-### npm-pack-zip 導入
+### npm-pack-zip
 
-#### **課題**
+[npm-pack-zip を導入](./docs/npm-pack-zip.md)し、zip 化+デプロイを自動化した。
 
-単純に OS の Zip 化 → アップロードすると、devDependencies のモジュールも含めて圧縮 → サイズがとんでもないことになる。
+- 手動 zip 化は node_modules の ignore など手間がヤバい
 
-#### **解決策**
+### husky
 
-`npm-pack-zip`というドンピシャのツールを導入した。
-
-参考: https://maku.blog/p/zmydq3f/
-
-1. ツールの導入
-
-```
-npm i -D npm-pack-dev
-```
-
-2. zip に含めたいモジュールを package.json に追加
-
-```
-{
-  "bundledDependencies": [
-    $package-name,
-  ],
-}
-```
-
-3. zip 化
-
-```
-npx npm-pack-zip
-```
-
-4. zip→upload を簡素にするため、npm scripts に登録
-
-```
-{
-    "pack": "npx npm-pack-zip",
-    "upload": "aws lambda update-function-code --function-name hellonodejs --zip-file fileb://.\\hellonodejs.zip", // 関数名とzip名は適宜変更
-    "deploy": "npm run pack && npm run upload
-}
-```
-
-5. 2 回目の zip 化以降、前回の zip があっても ignore されるように登録
-
-```
-{
-  "files": [
-    "!./hellonodejs.zip"
-  ],
-}
-```
+[husky を導入](./docs/husky.md)し、git push 時に自動で lambda への deploy が走るようにした。
