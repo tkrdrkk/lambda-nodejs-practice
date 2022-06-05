@@ -13,7 +13,11 @@
   "dependencies": {
     "axios": "^0.27.2"
   },
+  "bundledDependencies": [
+    "axios"
+  ],
   "devDependencies": {
-    "jest": "^28.1.0"
+    "jest": "^28.1.0",
+    "npm-pack-zip": "^1.3.0"
   }
 }
