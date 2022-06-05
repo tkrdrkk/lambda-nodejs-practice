@@ -4,9 +4,15 @@
   "description": "upload zip to lambda function",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "parachuter",
   "license": "MIT",
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
 }
