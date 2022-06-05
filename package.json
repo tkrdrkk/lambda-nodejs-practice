@@ -4,7 +4,8 @@
   "description": "upload zip to lambda function",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "npm run build && rm -rf node_modules && npm install --only=production"
   },
   "author": "tokiorush",
   "license": "MIT",
