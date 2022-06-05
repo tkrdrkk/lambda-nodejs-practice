@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "npm run build && rm -rf node_modules && npm install --only=production"
+    "pack": "npx npm-pack-zip",
+    "upload": "aws lambda update-function-code --function-name hellonodejs --zip-file fileb://.\\hellonodejs.zip",
+    "deploy": "npm run pack && npm run upload"
   },
   "author": "tokiorush",
   "license": "MIT",
@@ -13,6 +15,9 @@
   "dependencies": {
     "axios": "^0.27.2"
   },
+  "files": [
+    "!./hellonodejs.zip"
+  ],
   "bundledDependencies": [
     "axios"
   ],
