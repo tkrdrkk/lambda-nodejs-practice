@@ -7,7 +7,8 @@
     "test": "jest",
     "pack": "npx npm-pack-zip",
     "upload": "aws lambda update-function-code --function-name hellonodejs --zip-file fileb://.\\hellonodejs.zip",
-    "deploy": "npm run pack && npm run upload"
+    "deploy": "npm run pack && npm run upload",
+    "prepate": "husky install"
   },
   "author": "tokiorush",
   "license": "MIT",
@@ -16,12 +17,14 @@
     "axios": "^0.27.2"
   },
   "files": [
-    "!./hellonodejs.zip"
+    "!./hellonodejs.zip",
+    "!./**/**.test.**"
   ],
   "bundledDependencies": [
     "axios"
   ],
   "devDependencies": {
+    "husky": "^8.0.1",
     "jest": "^28.1.0",
     "npm-pack-zip": "^1.3.0"
   }
