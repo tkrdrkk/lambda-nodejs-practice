@@ -1,0 +1,12 @@
+{
+  "name": "hellonodejs",
+  "version": "1.0.0",
+  "description": "upload zip to lambda function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "parachuter",
+  "license": "MIT",
+  "keywords": []
+}
